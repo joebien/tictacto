@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand:300, 400,700');
+
+body {
+  background-color : black;
+}
+
+
+.App-logo {
+ //border : white solid;
+  animation: App-logo-spin infinite 20s linear;
+  height: 33%;
+margin-top : 5%;
+  position : relative;
+  z-index : 0;
+}
+
+.App-header {
+  background-color: black;
+  height: 115px;
+  padding: 1px;
+  color: white;
+  border : red solid;
+}
+
+.App-title {
+  //border : solid pink;
+  font-size: 1.5em;
+  position : relative;
+  z-index : 1;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.Main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+button {
+  cursor : pointer;
+}
+
+
+.x,.o {
+  position : relative;
+ // padding : 11%;
+  transition : .3s;
+  font-size : 60%;
+  //border : solid green 1px;
+
+
+}
+
+.x:hover,.o:hover{
+  /*position : absolute;*/
+  color: #97bfdb;
+  font-size : 80%;
+
+}
+
+table {
+  border-spacing: 6px;
+}
+td {
+  padding: 6px;
+  border:solid 1px;
+  transition : .3s;
+  box-shadow : 2px 2px 2px rgba(0, 0, 0, .5);
+}
+
+td:hover{
+  background-color : rgba(245, 247, 249, .2);
+  border : solid white 1px;
+}
+
+.App {
+  text-align: center;
+  display : flex;
+  flex-direction : column;
+  justify-content : flex-start;
+  align-items : center;
+  border : dotted red;
+  height : 450px;
+  width : 1300px;
+}
+
+.centerBox {
+  margin : 3% 0% 2%;
+  position : relative;
+  display: grid;
+  grid-template-columns: 36.5% 25% 36.5%;
+  grid-column-gap: 1%;
+  /*grid-template-rows: auto auto auto;*/
+  width : 94%;
+  height : 90%;
+  //border : teal solid 2px;
+}
+
+.infoLeft {
+  grid-column-start:1;
+  grid-column-end:2;
+  border:solid 1px;
+  position : relative;
+}
+
+.infoRight {
+  grid-column-start:3;
+  grid-column-end:4;
+  border:solid 1px;
+  position : relative;
+}
+
+.blok {
+  //border:solid red;
+  clip-path : inset(0);
+  position:relative;
+  height:100%;
+  grid-column-start:2;
+  grid-column-end:3;
+  display: grid;
+  grid-template-columns: 1fr 6px 1fr 6px 1fr;
+  grid-template-rows: 1fr 6px 1fr 6px 1fr;
+  grid-template-areas:
+          ' sq0 matrix1 sq1 matrix2 sq2 '
+'matrix3 matrix3 matrix3 matrix3 matrix3'
+          ' sq3 matrix4 sq4 matrix5 sq5 '
+          'matrix6 matrix6 matrix6 matrix6 matrix6'
+          ' sq6 matrix7 sq7 matrix8 sq8 '
+;
+
+}
+
+.blok > div {
+  //border : solid 1px;
+  //clip-path : inset(0);
+  //background-color : black;
+}
+
+table.background { background: url("./img/cityscape.jpg") no-repeat; }
+
+
+.gap{
+  position:relative;
+  //z-index : 3;
+  background-color : #d2d2d2;
+ // background-color : black;
+
+ }
+
+.blockGap1{
+  grid-area : matrix1 ;
+
+}
+
+.blockGap2{
+  grid-area : matrix2 ;
+}
+
+.blockGap3{
+  grid-area : matrix3 ;
+}
+
+.blockGap4{
+  grid-area : matrix4 ;
+}
+
+.blockGap5{
+  grid-area : matrix5 ;
+}
+
+.blockGap6{
+  grid-area : matrix6 ;
+}
+
+.blockGap7{
+  grid-area : matrix7 ;
+}
+
+.blockGap8{
+  grid-area : matrix8 ;
+}
+
+.sqr {
+  //box-sizing: border-box;
+  //border : solid 1px;
+
+  position : relative;
+  display : flex;
+  justify-content : center;
+  flex-direction : column;
+  background-color : rgba(255,255,255,0);
+  cursor : pointer;
+}
+
+.clear {
+  //background-color : black;
+  position : relative;
+}
+
+.white {
+background-color : white;
+  position : relative;
+}
+
+
+
+.sqr0 {
+  grid-area : sq0;
+
+  /*grid-column : 1 / span 1;*/
+  /*grid-row : 1 / span 1;*/
+}
+
+.sqr1 {
+  grid-area : sq1;
+  /*grid-column:  3/ span 1;*/
+  /*grid-row : 1 / span 1;*/
+}
+
+.sqr2 {
+  grid-area : sq2;
+  /*grid-column:  5/ span 1;*/
+  /*grid-row : 1 / span 1;*/
+}
+
+.sqr3 {
+  grid-area : sq3
+  /*grid-column:  1/ span 1;*/
+  /*grid-row : 3 / span 1;*/
+}
+
+.sqr4 {
+  grid-area : sq4
+  /*grid-column:  3/ span 1;*/
+  /*grid-row : 3 / span 1;*/
+}
+
+.sqr5 {
+  grid-area : sq5
+  /*grid-column:  5/ span 1;*/
+  /*grid-row : 3 / span 1;*/
+}
+
+.sqr6 {
+  grid-area : sq6
+  /*grid-column:  1/ span 1;*/
+  /*grid-row : 5 / span 1;*/
+}
+
+.sqr7 {
+  grid-area : sq7
+  /*grid-column:  3/ span 1;*/
+  /*grid-row : 5 / span 1;*/
+}
+
+.sqr8 {
+  grid-area : sq8
+  /*grid-column:  5/ span 1;*/
+  /*grid-row : 5 / span 1;*/
+}
+
