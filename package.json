@@ -7,6 +7,10 @@
     "react-dom": "^16.2.0",
     "react-scripts": "^1.0.17"
   },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ],
   "devDependencies": {
     "react-scripts": "1.0.17"
   },
