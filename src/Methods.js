@@ -8,7 +8,8 @@ export default class Methods extends Component {
   method = {
       reset: function () {
         this.setState({
-          squares: [, , , , , , , ,],
+          // squares: [, , , , , , , ,],
+          squares: [],
           win: [],
           visibleSquares: [true, true, true, true, true, true, true, true, true],
           rain: false
@@ -89,9 +90,9 @@ export default class Methods extends Component {
     },
 
     selectToken: function(t){
+      
       const setChange = () =>{
         return new Promise ((resolve)=>{
-
           this.setState({tokenChoice: t})
           resolve('succes')}
         )

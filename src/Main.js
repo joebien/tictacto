@@ -3,14 +3,6 @@ import Bkgrnd from './img/cityscape.jpg'
 import MovingUnits from './MovingUnits'
 import Methods from './Methods'
 
-const zindex = {
-  infoFront : 2,
-  infoBknd : 0,
-  reset : 5,
-  infoStyle : 3,
-  mainBknd : -1
-}
-
 export default class Main extends Methods {
 
   componentWillMount(){
@@ -18,14 +10,14 @@ export default class Main extends Methods {
   }
 
   state = {
-    squares: [ , , , , , , , , ],
-    win:[],
-    winner:'X',
-    tokenOptions:[['X','O'],['Mn','Sn'],['Yn','Yg']],
-    tokenChoice :['X','O'],
-
-    visibleSquares :[true,true,true,true,true,true,true,true,true],
-    rain : false
+    // squares: [ , , , , , , , , ],
+    squares: [],
+    win: [],
+    winner: 'X',
+    tokenOptions: [['X','O'],['Mn','Sn'],['Yn','Yg']],
+    tokenChoice: ['X','O'],
+    visibleSquares: [true,true,true,true,true,true,true,true,true],
+    rain: false
   }
 
   componentDidMount(){
@@ -40,7 +32,7 @@ export default class Main extends Methods {
     )
 }
   //Bind Methods
-    selectToken = this.method.selectToken.bind(this)
+  selectToken = this.method.selectToken.bind(this)
 
   checkForWin = this.method.checkForWin.bind(this)
 
@@ -62,22 +54,16 @@ export default class Main extends Methods {
   }
 
   render(){
-    const winnerInfo = this.tokenInfo[this.state.winner]
-
-    const blokBknd = {...infoBkgrnd,...{backgroundColor : winnerInfo.style.backgroundColor}}
-
-
+  
     return(
-            <div style = {main}>
-              <div style = {subBkgrnd} />
-              <img style = {mainBkgrnd} src={Bkgrnd}/>
-              <button style = {resetStyle}
+            <div className = 'main'>
+              <div style={subBkgrnd} />
+              <img style={mainBkgrnd} src={Bkgrnd} alt='cityscape'/>
+              <button className ='resetStyle'
                       onClick = {this.reset}>RESET</button>
               <div className='centerBox'>
 
                 <LeftInfo tokenInfo = {this.tokenInfo[this.state.tokenChoice[0]]}/>
-
-                <div>
 
                   <Block
                           tokenInfo = {this.tokenInfo}
@@ -88,91 +74,26 @@ export default class Main extends Methods {
                           hideMenu = {this.hideMenu}
                   />
 
-                </div>
-
                 <RightInfo tokenInfo = {this.tokenInfo[this.state.tokenChoice[1]]}/>
+              
               </div>
 
-<div style = {tableBox}>
-  <img style = {optBkgrnd} src={Bkgrnd}/>
-              <table style = {tokenOptions}>
-                <tbody>
-                <tr>{this.getTokenOptions()}</tr>
-                </tbody>
-              </table>
-</div>
+              {/* <div style = {tableBox}> */}
+  
+              <div className = 'tokenOptions'>
+                <div className = 'toolBox'>
+                  <div className = 'tokenTipL'>Choose your symbols &#8594;</div>
+                </div>
+                <div className = 'options'>{this.getTokenOptions()}</div>
+                <div className = 'tokenTipR'></div>
+              </div>
 
-            </div>
+              {/* </div> */}
+      </div>
     )
   }
 }
 
-
-const InfoBkrnd = (props)=>{
-  const graphRowStyle = {
-    display : 'flex',
-    flexDirection : 'row'
-  }
-  const clipBox = {
-    clipPath : 'inset(0px)',
-    //border : 'solid',
-    height : '100%',
-    width : '100%'
-  }
-  let k = 0
-  let j = 1
-
-  let graphicRow = []
-
-  for (let gu=0; gu<9 ; gu++ ){
-    graphicRow.push(<div key = {k++} style = {props.unitStyle}>{props.graphicUnit}</div>)
-  }
-
-  let graphicArray = []
-
-  for (let gr=0; gr<6 ; gr++){
-    graphicArray.push(<div key = {j++} style = {graphRowStyle}>{graphicRow}</div>)
-  }
-
-  return(
-          <div style = {clipBox}>{graphicArray}</div>
-  )
-}
-
-const main = {
-  position:'relative',
-  height : '50%',
-  width : '70%',
-  border:'solid rgba(255, 255, 255, .4) 1px',
-  display : 'flex',
-  justifyContent : 'center',
-  alignItems : 'center',
-  flexDirection : 'column',
-  fontFamily: "'Quicksand', sans-serif",
-}
-
-const optBkgrnd = {
-  position : 'absolute',
-  width : '100%',
-  height : '100%',
-  zIndex : -2,
-  left : 0
-}
-
-const tokenOptions ={
-  marginTop : '.5%',
-
-}
-
-const tableBox ={
-  position : 'relative',
-  border:'solid rgba(255, 255, 255, .6) 1px',
-  width: '17.5%',
-  height : '25%',
-  display : 'flex',
-  justifyContent : 'space-around'
-
-}
 
 const infoBkgrnd = {
   position:'absolute',
@@ -202,7 +123,10 @@ const infoBody = {
   //textShadow:'2px 2px 4px',
   // border : 'solid'
 }
-
+const infoText = {
+  backgroundColor : 'rgba(255,255,255,.5)',
+  padding : '2px 2px 0'
+}
 const LeftInfo=(props)=>{
   const {unitStyle, graphicUnit, token, text, style} = props.tokenInfo
   return (
@@ -227,12 +151,6 @@ const LeftInfo=(props)=>{
           </div>
   )
 }
-
-const infoText = {
-  backgroundColor : 'rgba(255,255,255,.5)',
-  padding : '2px 2px 0'
-}
-
 const RightInfo=(props)=>{
   const {unitStyle, graphicUnit, token, text, style} = props.tokenInfo
 
@@ -259,6 +177,37 @@ const RightInfo=(props)=>{
           </div>
   )
 }
+const InfoBkrnd = (props)=>{
+  const graphRowStyle = {
+    display : 'flex',
+    flexDirection : 'row'
+  }
+  const clipBox = {
+    clipPath : 'inset(0px)',
+    //border : 'solid',
+    height : '100%',
+    width : '100%'
+  }
+  let k = 0
+  let j = 1
+
+  let graphicRow = []
+
+  for (let gu=0; gu<9 ; gu++ ){
+    graphicRow.push(<div key = {k++} style = {props.unitStyle}>{props.graphicUnit}</div>)
+  }
+
+  let graphicArray = []
+
+  for (let gr=0; gr<7 ; gr++){
+    graphicArray.push(<div key = {j++} style = {graphRowStyle}>{graphicRow}</div>)
+  }
+
+  return(
+          <div style = {clipBox}>{graphicArray}</div>
+  )
+}
+
 
 class XOmenu extends Component {
 state={fullHide:false}
@@ -305,11 +254,7 @@ let blokno = 0
 //////////////////////////////////////////////////////////////////////
 
 const Square = (props)=> {
-  const menu = {
-    opacity:1,
-    display:'flex',
-    justifyContent: 'space-around'
-  }
+ 
   const { squares, win, visibleSquares} = props.propState
   const {translateToProp} = props
   let blno = blokno++
@@ -317,10 +262,6 @@ const Square = (props)=> {
 
 
   const tokenStyle = TokenInPlay ? TokenInPlay.tokenStyle : null
-
-
-
-  const  backgroundColor = tokenStyle ? tokenStyle.backgroundColor : ''
 
   const {lineHeight, color, textShadow, playBorder} = TokenInPlay?
           TokenInPlay.style :
@@ -336,7 +277,8 @@ const Square = (props)=> {
     textShadow : textShadow,
     //backgroundColor : backgroundColor,
     height : '99%',
-    width : '99%'
+    width : '99%',
+    textAlign: 'center'
   }
 
   let loseStyle = win.length > 2? {
@@ -345,8 +287,6 @@ const Square = (props)=> {
 
 
   let squareStyle = win.includes(blno) ? square : {...square,...loseStyle}
-
-  const sqrClass = 'sqr' + blno
 
   const view = visibleSquares[blno] ? 'sqr + white' : 'sqr + {sqrClass}'
 
@@ -377,18 +317,13 @@ display : 'flex',
     </div>
   )
 }
-
 const Block = (props)=> {
   let k = 0
   blokno = 0
   const{tokenInfo} = props
   const{winner, rain} = props.propState
-  let bkrnd = tokenInfo[winner].style.backgroundColor
-  let graphicUnit = tokenInfo[winner].graphicUnit
   const win = tokenInfo[winner]
-
-
-   const sqrs = new Array(9).fill('').map(() => {
+  const sqrs = new Array(9).fill('').map(() => {
 
     return (<Square key={k++}{...props}/>)
 
@@ -417,7 +352,6 @@ const Block = (props)=> {
 
             </div>)
 }
-
 const xoMenu = {
   position : 'absolute',
   top : 0,
@@ -427,22 +361,10 @@ const xoMenu = {
   display:'flex',
   justifyContent : 'space-around'
 }
-
 const xoMenuHide = {
         ...xoMenu,
         ...{opacity : .1}
 }
-
-
-
-const resetStyle = {
-  position : 'relative',
-  zIndex : 5,
-  //margin: '1.4% 0 ',
-  border : 'solid teal',
-  boxShadow : '3px 3px 11px rgba(0,0,0,.6)'
-}
-
 const mainBkgrnd = {
   width:'100%',
   height:'100%',
@@ -451,7 +373,6 @@ const mainBkgrnd = {
   opacity:.3,
 
 }
-
 const subBkgrnd = {
   width:'100%',
   height:'100%',

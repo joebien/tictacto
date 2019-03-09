@@ -50,9 +50,8 @@ shiftRain=()=>{
 
   render() {
 
-  const {winner} = this.props
+    const {winner} = this.props
 
-    const unitStyle = winner.unitStyle
     const bkndStyle = {...bknd,...{backgroundColor : winner.style.backgroundColor}}
 
     return(
@@ -63,8 +62,7 @@ shiftRain=()=>{
       </div>
 
     )}
-
-}
+  }
 
 class DivitRow extends Component {
 
